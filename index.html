@@ -230,8 +230,8 @@ textarea.f{min-height:100px;resize:vertical}
 </fieldset>
 <button class="btn" type="submit">Montar meu briefing</button>
 </form>
-<div class="done" id="done"><h3 style="font-size:22px;margin-bottom:10px">Briefing pronto</h3>
-<p>Falta só o envio: escolha mandar pelo WhatsApp ou pelo e-mail mokaelabo@gmail.com e anexe suas imagens de referência na conversa. Depois a MOKAE avalia o projeto e responde com a proposta.</p>
+<div class="done" id="done"><h3 id="dt" style="font-size:22px;margin-bottom:10px">Enviando...</h3>
+<p id="dp">Aguarde um instante.</p>
 <pre id="msg"></pre>
 <div class="row"><a class="btn" id="wa" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a><a class="btn o" id="ml" href="mailto:mokaelabo@gmail.com">Enviar por e-mail</a><button class="btn v" type="button" id="cp">Copiar texto</button></div></div>
 </div></div>
@@ -249,7 +249,10 @@ F.addEventListener('submit',function(ev){ev.preventDefault();var d=new FormData(
 var ap=d.getAll('aplic').join(', ');if(g('aplicout')!=='-')ap+=(ap?', ':'')+'Outros: '+g('aplicout');
 var m='BRIEFING DE CRIAÇÃO — MOKAE\n\nNome: '+g('nome')+'\nContato: '+g('contato')+'\n\n1. IDENTIDADE\nMarca, conceito e público: '+g('marca')+'\nReferências estéticas: '+g('refest')+'\n\n2. CONCEITO DO DROP\nTema/mensagem: '+g('tema')+'\nElementos obrigatórios: '+g('must')+'\n\n3. TÉCNICO\nPacote: '+g('pacote')+'\nAplicação: '+(ap||'-')+'\nTécnica: '+g('tecnica')+'\n\n4. REFERÊNCIAS VISUAIS\n'+[1,2,3,4,5].map(function(i){return g('l'+i)}).filter(function(x){return x!=='-'}).join('\n');
 document.getElementById('msg').textContent=m;document.getElementById('wa').href='https://wa.me/55SEUNUMERO?text='+encodeURIComponent(m);document.getElementById('ml').href='mailto:mokaelabo@gmail.com?subject='+encodeURIComponent('Briefing de criação — '+g('nome'))+'&body='+encodeURIComponent(m);
-var dn=document.getElementById('done');dn.style.display='block';dn.scrollIntoView({block:'center'});});
+var dn=document.getElementById('done'),dt=document.getElementById('dt'),dp=document.getElementById('dp'),sb=F.querySelector('button[type=submit]');
+dn.style.display='block';dt.textContent='Enviando...';dp.textContent='Aguarde um instante.';sb.disabled=true;dn.scrollIntoView({block:'center'});
+var pl={_subject:'Briefing de criação — '+g('nome'),_template:'table',_captcha:'false',Nome:g('nome'),Contato:g('contato'),Marca_e_publico:g('marca'),Referencias_esteticas:g('refest'),Tema_do_drop:g('tema'),Elementos_obrigatorios:g('must'),Pacote:g('pacote'),Aplicacao:ap||'-',Tecnica:g('tecnica'),Link_1:g('l1'),Link_2:g('l2'),Link_3:g('l3'),Link_4:g('l4'),Link_5:g('l5')};
+fetch('https://formsubmit.co/ajax/mokaelabo@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(pl)}).then(function(r){return r.json();}).then(function(j){if(j&&(j.success===true||j.success==='true')){dt.textContent='Briefing enviado!';dp.textContent='Recebemos o seu briefing. A MOKAE avalia o projeto e responde com a proposta por e-mail ou WhatsApp. Se quiser, mande também suas imagens de referência pelo WhatsApp.';}else{throw new Error('falha');}}).catch(function(){dt.textContent='Não consegui enviar automaticamente';dp.textContent='Mande o briefing por uma das opções abaixo (WhatsApp, e-mail ou copiar o texto).';}).finally(function(){sb.disabled=false;});});
 document.getElementById('cp').addEventListener('click',function(){try{navigator.clipboard.writeText(document.getElementById('msg').textContent);this.textContent='Copiado'}catch(e){}});
 </script>
 </body>
