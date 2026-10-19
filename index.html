@@ -124,6 +124,15 @@ h2{font-size:clamp(26px,4.4vw,46px);line-height:1;margin-bottom:10px}
 .prod .pk2{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
 .prod.soon{border-style:dashed;justify-content:center;align-items:center;text-align:center;opacity:.75;min-height:220px}
 @media(max-width:760px){.prod.big{grid-column:auto}.prod .pk2{grid-template-columns:1fr}}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.78);display:grid;place-items:center;padding:16px}
+.modal[hidden]{display:none}
+.modal .win{width:min(480px,100%)}
+.modal label{display:block;margin:0 0 6px}
+.modal h3{font-size:22px;margin-bottom:10px}
+.modal p{margin:0 0 16px}
+button.dot{padding:0;cursor:pointer}
+button.btn{cursor:pointer}
+#mxs{margin:14px 0 0;color:var(--g)}
 /* briefing */
 .back{display:inline-block;margin-bottom:18px;border-bottom:2px solid var(--g)}
 .fq{margin:0 0 30px;padding:0;border:0}
@@ -175,7 +184,7 @@ textarea.f{min-height:100px;resize:vertical}
 <div class="prod big"><div class="pk2">
 <div><span class="badge">NOVO</span><h3>Pack Streetwear 01</h3>
 <p>10 estampas prontas para usar na sua marca, com um kit de texturas de brinde. Pagou, baixou, estampou.</p>
-<div class="lcd">R$ 197</div><br><a class="btn" href="#checkout">Comprar e baixar agora</a></div>
+<div class="lcd">R$ 197</div><br><a class="btn" href="#checkout" data-notify="Clique em Comprar: Pack Streetwear 01">Comprar e baixar agora</a></div>
 <div class="cells" aria-label="Prévia das 10 estampas">
 <i style="background:url(imagens/pack-01.jpg) center/cover no-repeat,radial-gradient(circle,#18FF00,#000)"></i><i style="background:url(imagens/pack-02.jpg) center/cover no-repeat,conic-gradient(#E8E2E1,#000,#E8E2E1)"></i><i style="background:url(imagens/pack-03.jpg) center/cover no-repeat,linear-gradient(45deg,#000,#18FF00)"></i><i style="background:url(imagens/pack-04.jpg) center/cover no-repeat,repeating-linear-gradient(45deg,#18FF00 0 6px,#000 6px 12px)"></i><i style="background:url(imagens/pack-05.jpg) center/cover no-repeat,radial-gradient(circle at 20% 80%,#E8E2E1,#3C0154)"></i>
 <i style="background:url(imagens/pack-06.jpg) center/cover no-repeat,radial-gradient(circle at 80% 20%,#18FF00,#3C0154)"></i><i style="background:url(imagens/pack-07.jpg) center/cover no-repeat,conic-gradient(from 90deg,#000,#18FF00)"></i><i style="background:url(imagens/pack-08.jpg) center/cover no-repeat,repeating-radial-gradient(circle,#000 0 5px,#E8E2E1 5px 10px)"></i><i style="background:url(imagens/pack-09.jpg) center/cover no-repeat,linear-gradient(180deg,#000,#E8E2E1)"></i><i style="background:url(imagens/pack-10.jpg) center/cover no-repeat,radial-gradient(circle,#E8E2E1,#000 70%)"></i>
@@ -192,10 +201,10 @@ textarea.f{min-height:100px;resize:vertical}
 <p class="sub">Cada arte tem um único dono. Quem garante, leva o direito exclusivo do arquivo.</p>
 <div class="drops">
 <div class="drop sold"><div class="art" style="background:url(imagens/drop-001.jpg) center/cover no-repeat,radial-gradient(circle at 30% 30%,#18FF00,#3C0154 60%,#000)"><div class="stamp"><div>ESGOTADO<small>Exclusiva da marca [Nome da marca]</small></div></div></div><h4>Estampa #001: Cyber Rebel</h4><p>vendida</p><a class="btn off" href="#">Indisponível</a></div>
-<div class="drop"><div class="art" style="background:url(imagens/drop-002.jpg) center/cover no-repeat,conic-gradient(from 20deg,#000,#3C0154,#18FF00,#000)"></div><h4>Estampa #002: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="mailto:mokaelabo@gmail.com?subject=Exclusividade%20da%20Estampa%20%23002&body=Ol%C3%A1%2C%20gostaria%20de%20garantir%20a%20exclusividade%20da%20Estampa%20%23002%20do%20cat%C3%A1logo%20MOKAE.">Garantir exclusividade</a></div>
-<div class="drop"><div class="art" style="background:url(imagens/drop-003.jpg) center/cover no-repeat,repeating-radial-gradient(circle at 60% 40%,#3C0154 0 14px,#000 14px 28px)"></div><h4>Estampa #003: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="mailto:mokaelabo@gmail.com?subject=Exclusividade%20da%20Estampa%20%23003&body=Ol%C3%A1%2C%20gostaria%20de%20garantir%20a%20exclusividade%20da%20Estampa%20%23003%20do%20cat%C3%A1logo%20MOKAE.">Garantir exclusividade</a></div>
+<div class="drop"><div class="art" style="background:url(imagens/drop-002.jpg) center/cover no-repeat,conic-gradient(from 20deg,#000,#3C0154,#18FF00,#000)"></div><h4>Estampa #002: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="#" data-excl="002">Garantir exclusividade</a></div>
+<div class="drop"><div class="art" style="background:url(imagens/drop-003.jpg) center/cover no-repeat,repeating-radial-gradient(circle at 60% 40%,#3C0154 0 14px,#000 14px 28px)"></div><h4>Estampa #003: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="#" data-excl="003">Garantir exclusividade</a></div>
 <div class="drop sold"><div class="art" style="background:url(imagens/drop-004.jpg) center/cover no-repeat,linear-gradient(135deg,#3C0154 50%,#18FF00 50%)"><div class="stamp"><div>ESGOTADO<small>Exclusiva da marca [Nome da marca]</small></div></div></div><h4>Estampa #004: Nome da arte</h4><p>vendida</p><a class="btn off" href="#">Indisponível</a></div>
-<div class="drop"><div class="art" style="background:url(imagens/drop-005.jpg) center/cover no-repeat,radial-gradient(circle at 70% 70%,#E8E2E1,#3C0154 45%,#000)"></div><h4>Estampa #005: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="mailto:mokaelabo@gmail.com?subject=Exclusividade%20da%20Estampa%20%23005&body=Ol%C3%A1%2C%20gostaria%20de%20garantir%20a%20exclusividade%20da%20Estampa%20%23005%20do%20cat%C3%A1logo%20MOKAE.">Garantir exclusividade</a></div>
+<div class="drop"><div class="art" style="background:url(imagens/drop-005.jpg) center/cover no-repeat,radial-gradient(circle at 70% 70%,#E8E2E1,#3C0154 45%,#000)"></div><h4>Estampa #005: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="#" data-excl="005">Garantir exclusividade</a></div>
 </div></div></div></div></section>
 
 <section class="sec" id="encomenda"><div class="wrap"><div class="win">
@@ -279,6 +288,12 @@ textarea.f{min-height:100px;resize:vertical}
 </div></section>
 </main>
 
+<div class="modal" id="mx" hidden role="dialog" aria-modal="true" aria-labelledby="mxt"><div class="win">
+<div class="tb"><i class="dot"></i><b>garantir_exclusividade.exe</b><i class="dot"></i><button type="button" class="dot g" id="mxc" aria-label="Fechar"></button></div>
+<div class="wb"><h3 id="mxt">Garantir exclusividade</h3>
+<p>Deixe o seu nome e e-mail. A MOKAE recebe o aviso na hora e responde com os próximos passos.</p>
+<form id="mf"><label for="mxn">Seu nome</label><input class="f" id="mxn" required><label for="mxe">Seu e-mail</label><input class="f" id="mxe" type="email" required>
+<button class="btn" type="submit" id="mxb">Enviar</button><p id="mxs" role="status"></p></form></div></div></div>
 <div class="task"><a class="start" href="#top"><i class="lg"></i></a><span>laboratório criativo autoral © 2026 · <a href="mailto:mokaelabo@gmail.com" style="border-bottom:2px solid var(--g)">mokaelabo@gmail.com</a> · <a href="https://www.instagram.com/laboratoriomokae/" target="_blank" rel="noopener" style="border-bottom:2px solid var(--g)">Instagram</a></span><div class="clock" id="clk">00:00</div></div>
 <script>
 function t(){var d=new Date();document.getElementById('clk').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}
@@ -295,6 +310,18 @@ dn.style.display='block';dt.textContent='Enviando...';dp.textContent='Aguarde um
 var pl={_subject:'Novo pedido de criação — '+g('nome'),_template:'table',_captcha:'false',Nome:g('nome'),Contato:g('contato'),Marca_e_publico:g('marca'),Referencias_esteticas:g('refest'),Tema_do_drop:g('tema'),Elementos_obrigatorios:g('must'),Pacote:g('pacote'),Aplicacao:ap||'-',Tecnica:g('tecnica'),Link_1:g('l1'),Link_2:g('l2'),Link_3:g('l3'),Link_4:g('l4'),Link_5:g('l5')};
 fetch('https://formsubmit.co/ajax/mokaelabo@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(pl)}).then(function(r){return r.json();}).then(function(j){if(j&&(j.success===true||j.success==='true')){dt.textContent='Pedido enviado!';dp.textContent='Recebemos as suas respostas. A MOKAE avalia o seu projeto e responde com a proposta por e-mail. Se quiser, envie também as imagens de inspiração para mokaelabo@gmail.com.';}else{throw new Error('falha');}}).catch(function(){dt.textContent='Não consegui enviar automaticamente';dp.textContent='Mande o seu pedido por uma das opções abaixo (enviar por e-mail ou copiar o texto).';}).finally(function(){sb.disabled=false;});});
 document.getElementById('cp').addEventListener('click',function(){try{navigator.clipboard.writeText(document.getElementById('msg').textContent);this.textContent='Copiado'}catch(e){}});
+
+var API='https://formsubmit.co/ajax/mokaelabo@gmail.com';
+function send(o){return fetch(API,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(Object.assign({_captcha:'false',_template:'table'},o))}).then(function(r){return r.json();});}
+var mx=document.getElementById('mx'),cur='';
+function closeM(){mx.hidden=true;}
+document.querySelectorAll('[data-excl]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();cur=a.getAttribute('data-excl');document.getElementById('mxt').textContent='Garantir a Estampa #'+cur;document.getElementById('mxs').textContent='';mx.hidden=false;document.getElementById('mxn').focus();});});
+document.getElementById('mxc').addEventListener('click',closeM);
+mx.addEventListener('click',function(e){if(e.target===mx)closeM();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
+document.getElementById('mf').addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('mxn').value.trim(),em=document.getElementById('mxe').value.trim(),st=document.getElementById('mxs'),b=document.getElementById('mxb');b.disabled=true;st.textContent='Enviando...';
+send({_subject:'Interesse na Estampa #'+cur+' — '+n,Estampa:'#'+cur,Nome:n,email:em,_autoresponse:'Oi, '+n+'! Recebemos o seu interesse na Estampa #'+cur+'. Em breve a MOKAE responde por aqui com os próximos passos.'}).then(function(j){if(j&&(j.success===true||j.success==='true')){st.textContent='Recebemos! A MOKAE responde por e-mail em breve.';document.getElementById('mf').reset();}else{throw new Error('falha');}}).catch(function(){st.textContent='Não consegui enviar. Escreva para mokaelabo@gmail.com.';}).finally(function(){b.disabled=false;});});
+document.querySelectorAll('[data-notify]').forEach(function(a){a.addEventListener('click',function(){try{send({_subject:a.getAttribute('data-notify'),Botao:a.textContent.trim(),Pagina:location.href}).catch(function(){});}catch(e){}});});
 </script>
 </body>
 </html>
