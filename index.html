@@ -108,6 +108,22 @@ h2{font-size:clamp(26px,4.4vw,46px);line-height:1;margin-bottom:10px}
 .start .lg{--c:#000;width:52px;height:25px}
 .task span{font-size:14px}
 .clock{margin-left:auto;background:#031006;border:2px inset var(--p2);padding:3px 12px;font:400 14px var(--t);color:var(--g);text-shadow:0 0 8px var(--g)}
+.badge{display:inline-block;background:var(--g);color:#000;font:400 11px var(--t);padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.tag{margin:0 0 10px;opacity:.9}
+.pk .pr{font-size:30px;margin-bottom:6px}
+.inc-t{font-size:20px;margin:6px 0 14px}
+.incl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:0 0 28px}
+.incl .it{background:#000;border:2px solid var(--ring);border-radius:10px;padding:16px}
+.incl h4{font-size:14px;color:var(--g);margin:0 0 8px;line-height:1.25}
+.incl p{margin:0;font-size:16px;line-height:1.4}
+.shop{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.prod{background:#000;border:2px solid var(--ring);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.prod h3{font-size:clamp(22px,3vw,34px);line-height:1.05;margin:0 0 8px}
+.prod p{margin:0 0 6px}
+.prod.big{grid-column:span 2}
+.prod .pk2{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
+.prod.soon{border-style:dashed;justify-content:center;align-items:center;text-align:center;opacity:.75;min-height:220px}
+@media(max-width:760px){.prod.big{grid-column:auto}.prod .pk2{grid-template-columns:1fr}}
 /* briefing */
 .back{display:inline-block;margin-bottom:18px;border-bottom:2px solid var(--g)}
 .fq{margin:0 0 30px;padding:0;border:0}
@@ -133,7 +149,7 @@ textarea.f{min-height:100px;resize:vertical}
 <div class="tb"><i class="dot"></i><b>mokae.exe</b><i class="dot"></i><i class="dot g"></i></div>
 <nav class="nav">
 <a href="#top" aria-label="MOKAE" class="mark sm" style="width:104px;margin:0 auto 10px 0"><i class="lg sh"></i><i class="lg"></i></a>
-<a class="tab on" href="#loja">Loja</a><a class="tab" href="#drops">Drops exclusivos</a><a class="tab" href="#b2b">Serviços B2B</a><a class="tab" href="#manifesto">Manifesto</a>
+<a class="tab on" href="#loja">Loja</a><a class="tab" href="#drops">Drops exclusivos</a><a class="tab" href="#encomenda">Sob encomenda</a><a class="tab" href="#manifesto">Manifesto</a>
 <div class="url">type an url here...</div>
 </nav></div></div>
 
@@ -144,21 +160,30 @@ textarea.f{min-height:100px;resize:vertical}
 <div class="halftone">
 <div class="mark" role="img" aria-label="MOKAE"><i class="lg sh"></i><i class="lg"></i></div>
 <p class="lead">A arte é o centro. Todo o resto é uma forma de colocá-la no mundo.</p>
-<div class="row"><a class="btn" href="#loja">Ver pack de estampas (R$ 197)</a><a class="btn v" href="#b2b">Solicitar estampa sob encomenda</a></div>
+<div class="row"><a class="btn" href="#loja">Conhecer a loja</a><a class="btn v" href="#encomenda">Solicitar estampa sob encomenda</a></div>
 </div></div>
-<div class="ticker"><div>&gt;&gt; PACK STREETWEAR 01 NO AR // DROPS EXCLUSIVOS: UMA ARTE, UM DONO // BRIEFING ABERTO PARA NOVAS MARCAS // A ARTE NÃO NASCEU PARA CABER. NASCEU PARA DIZER. //</div></div>
+<div class="ticker"><div>&gt;&gt; NOVO NA LOJA: PACK STREETWEAR 01 // DROPS EXCLUSIVOS: UMA ARTE, UM DONO // ENCOMENDAS ABERTAS PARA NOVAS MARCAS // A ARTE NÃO NASCEU PARA CABER. NASCEU PARA DIZER. //</div></div>
 </div></div></section>
 
 <section class="sec" id="loja"><div class="wrap"><div class="win">
-<div class="tb"><i class="dot"></i><b>loja/pack_comercial</b><i class="dot"></i><i class="dot g"></i></div>
-<div class="wb pack">
-<div><h3>Pack Streetwear 01</h3>
-<p>10 estampas prontas com kit de texturas de brinde. Pagou, baixou, estampou.</p>
+<div class="tb"><i class="dot"></i><b>loja/produtos</b><i class="dot"></i><i class="dot g"></i></div>
+<div class="wb">
+<h2>Loja</h2>
+<p class="sub">Arte autoral em formatos prontos para levar para a sua marca, o seu projeto ou o seu dia a dia.</p>
+<div class="shop">
+<!-- PRODUTO: para adicionar outro item, copie um bloco <div class="prod">...</div> e troque nome, descrição, preço e link -->
+<div class="prod big"><div class="pk2">
+<div><span class="badge">NOVO</span><h3>Pack Streetwear 01</h3>
+<p>10 estampas prontas para usar na sua marca, com um kit de texturas de brinde. Pagou, baixou, estampou.</p>
 <div class="lcd">R$ 197</div><br><a class="btn" href="#checkout">Comprar e baixar agora</a></div>
 <div class="cells" aria-label="Prévia das 10 estampas">
 <i style="background:url(imagens/pack-01.jpg) center/cover no-repeat,radial-gradient(circle,#18FF00,#000)"></i><i style="background:url(imagens/pack-02.jpg) center/cover no-repeat,conic-gradient(#E8E2E1,#000,#E8E2E1)"></i><i style="background:url(imagens/pack-03.jpg) center/cover no-repeat,linear-gradient(45deg,#000,#18FF00)"></i><i style="background:url(imagens/pack-04.jpg) center/cover no-repeat,repeating-linear-gradient(45deg,#18FF00 0 6px,#000 6px 12px)"></i><i style="background:url(imagens/pack-05.jpg) center/cover no-repeat,radial-gradient(circle at 20% 80%,#E8E2E1,#3C0154)"></i>
 <i style="background:url(imagens/pack-06.jpg) center/cover no-repeat,radial-gradient(circle at 80% 20%,#18FF00,#3C0154)"></i><i style="background:url(imagens/pack-07.jpg) center/cover no-repeat,conic-gradient(from 90deg,#000,#18FF00)"></i><i style="background:url(imagens/pack-08.jpg) center/cover no-repeat,repeating-radial-gradient(circle,#000 0 5px,#E8E2E1 5px 10px)"></i><i style="background:url(imagens/pack-09.jpg) center/cover no-repeat,linear-gradient(180deg,#000,#E8E2E1)"></i><i style="background:url(imagens/pack-10.jpg) center/cover no-repeat,radial-gradient(circle,#E8E2E1,#000 70%)"></i>
-</div></div></div></div></section>
+</div>
+</div></div>
+<div class="prod soon"><h3>Em breve</h3><p>Novos produtos chegando na loja.</p></div>
+</div>
+</div></div></div></section>
 
 <section class="sec" id="drops"><div class="wrap"><div class="win">
 <div class="tb"><i class="dot"></i><b>drops_exclusivos.gal</b><i class="dot"></i><i class="dot g"></i></div>
@@ -173,17 +198,23 @@ textarea.f{min-height:100px;resize:vertical}
 <div class="drop"><div class="art" style="background:url(imagens/drop-005.jpg) center/cover no-repeat,radial-gradient(circle at 70% 70%,#E8E2E1,#3C0154 45%,#000)"></div><h4>Estampa #005: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20gostaria%20de%20garantir%20a%20exclusividade%20da%20Estampa%20%23005%20do%20cat%C3%A1logo%20MOKAE">Garantir exclusividade</a></div>
 </div></div></div></div></section>
 
-<section class="sec" id="b2b"><div class="wrap"><div class="win">
-<div class="tb"><i class="dot"></i><b>servicos_b2b/criacao_customizada</b><i class="dot"></i><i class="dot g"></i></div>
+<section class="sec" id="encomenda"><div class="wrap"><div class="win">
+<div class="tb"><i class="dot"></i><b>encomenda/criacao_personalizada</b><i class="dot"></i><i class="dot g"></i></div>
 <div class="wb">
-<h2>Criação customizada</h2>
-<p class="sub">Desenvolva o drop perfeito para a sua marca, com a linguagem de quem cria.</p>
+<h2>Criação personalizada</h2>
+<p class="sub">Seu drop, na nossa linguagem. Estampas autorais criadas sob medida para a sua marca, do primeiro papo até o arquivo pronto para produzir.</p>
 <div class="pk">
-<div class="win"><div class="tb"><b>CÁPSULA</b></div><div class="wb"><div class="pr">Valor sob briefing</div><ul><li>Entregáveis do pacote</li><li>Entregáveis do pacote</li></ul></div></div>
-<div class="win hi"><div class="tb"><b>DROP CORE</b></div><div class="wb"><div class="pr">Valor sob briefing</div><ul><li>Entregáveis do pacote</li><li>Entregáveis do pacote</li></ul></div></div>
-<div class="win"><div class="tb"><b>LAB COMPLETO</b></div><div class="wb"><div class="pr">Valor sob briefing</div><ul><li>Entregáveis do pacote</li><li>Entregáveis do pacote</li></ul></div></div>
+<div class="win"><div class="tb"><b>CÁPSULA</b></div><div class="wb"><p class="tag">Ideal para testar o seu estilo.</p><div class="pr">R$ 1.000</div><ul><li>1 estampa exclusiva</li></ul></div></div>
+<div class="win hi"><div class="tb"><b>DROP CORE</b></div><div class="wb"><span class="badge">RECOMENDADO</span><p class="tag">Uma coleção inteira, com começo, meio e fim.</p><div class="pr">R$ 2.500</div><ul><li>3 estampas coesas</li></ul></div></div>
+<div class="win"><div class="tb"><b>LAB COMPLETO</b></div><div class="wb"><p class="tag">Estampas e identidade do drop.</p><div class="pr">R$ 4.000</div><ul><li>5 estampas exclusivas</li><li>Identidade visual do drop: artes de divulgação e etiquetas</li></ul></div></div>
 </div>
-<a class="btn o" href="#briefing">Iniciar briefing do meu drop</a>
+<h3 class="inc-t">Em todos os pacotes</h3>
+<div class="incl">
+<div class="it"><h4>Conversa inicial e 2 rodadas de ajustes</h4><p>Primeiro a gente conversa para entender a sua marca. Depois você pode pedir ajustes na arte em até 2 rodadas.</p></div>
+<div class="it"><h4>Arquivos prontos para estampar</h4><p>Você recebe os arquivos finais da arte (AI, PDF e PNG, em alta qualidade para impressão), separados para silk e para DTF, e também o Guia de Cores.</p></div>
+<div class="it"><h4>Brinde: Guia Técnica de Produção</h4><p>Um PDF assinado pela MOKAE que diz qual técnica de estampa combina mais com cada arte. Por exemplo: silk para traços finos e DTF para degradês.</p></div>
+</div>
+<a class="btn o" href="#briefing">Começar meu pedido</a>
 </div></div></div></section>
 
 <section class="sec" id="manifesto"><div class="wrap"><div class="win">
@@ -197,25 +228,25 @@ textarea.f{min-height:100px;resize:vertical}
 </div></div></div></section>
 
 <section id="briefing"><div class="wrap">
-<a class="back" href="#b2b">&larr; Voltar aos pacotes</a>
-<div class="win"><div class="tb"><i class="dot"></i><b>briefing_de_criacao.mok</b><i class="dot"></i><i class="dot g"></i></div>
+<a class="back" href="#encomenda">&larr; Voltar aos pacotes</a>
+<div class="win"><div class="tb"><i class="dot"></i><b>conte_sobre_o_projeto.mok</b><i class="dot"></i><i class="dot g"></i></div>
 <div class="wb">
-<h2>Briefing de criação — MOKAE®</h2>
+<h2>Conte sobre o seu projeto</h2>
 <p class="sub">Para criarmos um drop pesado, preciso entender a mente por trás da sua marca. Responda com o máximo de detalhes possível.</p>
 <form id="bf">
 <fieldset class="fq"><h3>Seu contato</h3>
 <label class="l" for="nome">Seu nome</label><input class="f" id="nome" name="nome" required>
 <label class="l" for="contato">WhatsApp ou e-mail</label><input class="f" id="contato" name="contato" required>
 </fieldset>
-<fieldset class="fq"><h3>1. Alinhamento de identidade</h3>
+<fieldset class="fq"><h3>1. Sobre a sua marca</h3>
 <label class="l" for="marca">Qual o nome da sua marca e qual o principal conceito/público dela?</label><textarea class="f" id="marca" name="marca" required></textarea>
-<label class="l" for="refest">Quais são as suas 3 maiores referências estéticas atualmente? (Marcas gringas, nacionais, artistas, movimentos)</label><textarea class="f" id="refest" name="refest" required></textarea>
+<label class="l" for="refest">Quais são as suas 3 maiores inspirações visuais hoje? (marcas de fora ou do Brasil, artistas, estilos, movimentos)</label><textarea class="f" id="refest" name="refest" required></textarea>
 </fieldset>
-<fieldset class="fq"><h3>2. O conceito do drop</h3>
+<fieldset class="fq"><h3>2. A ideia do drop</h3>
 <label class="l" for="tema">Este drop/coleção tem um tema central ou uma mensagem que quer passar? (Ex: uma música, uma crítica social, uma estética de anime antigo, cultura do graffiti, etc.)</label><textarea class="f" id="tema" name="tema" required></textarea>
 <label class="l" for="must">Quais elementos visuais NÃO podem faltar na ilustração de jeito nenhum?</label><textarea class="f" id="must" name="must" required></textarea>
 </fieldset>
-<fieldset class="fq"><h3>3. Direcionamento técnico</h3>
+<fieldset class="fq"><h3>3. Como vai ser produzido</h3>
 <p class="l">Qual pacote você contratou?</p>
 <div class="chips"><label class="chip"><input type="radio" name="pacote" value="Cápsula - 1 Arte" required>Cápsula · 1 arte</label><label class="chip"><input type="radio" name="pacote" value="Drop Core - 3 Artes">Drop Core · 3 artes</label><label class="chip"><input type="radio" name="pacote" value="Lab Completo - 5 Artes + Extras">Lab Completo · 5 artes + extras</label></div>
 <p class="l">Onde as estampas serão aplicadas?</p>
@@ -224,11 +255,11 @@ textarea.f{min-height:100px;resize:vertical}
 <p class="l">Qual técnica de estamparia você pretende usar na produção?</p>
 <div class="chips"><label class="chip"><input type="radio" name="tecnica" value="Silk Screen" required>Silk Screen</label><label class="chip"><input type="radio" name="tecnica" value="DTF">DTF</label><label class="chip"><input type="radio" name="tecnica" value="Ainda não decidi">Ainda não decidi</label></div>
 </fieldset>
-<fieldset class="fq"><h3>4. Referências visuais</h3>
-<p class="note">Insira de 3 a 5 links de estampas que você curte (traço, composição ou cores) para servir de norte criativo. Para anexar imagens, mande junto na conversa depois de enviar o briefing.</p>
+<fieldset class="fq"><h3>4. Inspirações</h3>
+<p class="note">Insira de 3 a 5 links de estampas que você curte (traço, composição ou cores) para servir de norte criativo. Para anexar imagens, mande junto na conversa depois de enviar o pedido.</p>
 <input class="f" name="l1" aria-label="Link 1" placeholder="Link 1" required><input class="f" name="l2" aria-label="Link 2" placeholder="Link 2" required><input class="f" name="l3" aria-label="Link 3" placeholder="Link 3" required><input class="f" name="l4" aria-label="Link 4" placeholder="Link 4 (opcional)"><input class="f" name="l5" aria-label="Link 5" placeholder="Link 5 (opcional)">
 </fieldset>
-<button class="btn" type="submit">Montar meu briefing</button>
+<button class="btn" type="submit">Enviar meu pedido</button>
 </form>
 <div class="done" id="done"><h3 id="dt" style="font-size:22px;margin-bottom:10px">Enviando...</h3>
 <p id="dp">Aguarde um instante.</p>
@@ -247,12 +278,12 @@ window.addEventListener('hashchange',route);route();
 var F=document.getElementById('bf');
 F.addEventListener('submit',function(ev){ev.preventDefault();var d=new FormData(F),g=function(k){return (d.get(k)||'').toString().trim()||'-'};
 var ap=d.getAll('aplic').join(', ');if(g('aplicout')!=='-')ap+=(ap?', ':'')+'Outros: '+g('aplicout');
-var m='BRIEFING DE CRIAÇÃO — MOKAE\n\nNome: '+g('nome')+'\nContato: '+g('contato')+'\n\n1. IDENTIDADE\nMarca, conceito e público: '+g('marca')+'\nReferências estéticas: '+g('refest')+'\n\n2. CONCEITO DO DROP\nTema/mensagem: '+g('tema')+'\nElementos obrigatórios: '+g('must')+'\n\n3. TÉCNICO\nPacote: '+g('pacote')+'\nAplicação: '+(ap||'-')+'\nTécnica: '+g('tecnica')+'\n\n4. REFERÊNCIAS VISUAIS\n'+[1,2,3,4,5].map(function(i){return g('l'+i)}).filter(function(x){return x!=='-'}).join('\n');
-document.getElementById('msg').textContent=m;document.getElementById('wa').href='https://wa.me/55SEUNUMERO?text='+encodeURIComponent(m);document.getElementById('ml').href='mailto:mokaelabo@gmail.com?subject='+encodeURIComponent('Briefing de criação — '+g('nome'))+'&body='+encodeURIComponent(m);
+var m='PEDIDO DE CRIAÇÃO — MOKAE\n\nNome: '+g('nome')+'\nContato: '+g('contato')+'\n\n1. IDENTIDADE\nMarca, conceito e público: '+g('marca')+'\nInspirações visuais: '+g('refest')+'\n\n2. CONCEITO DO DROP\nTema/mensagem: '+g('tema')+'\nElementos obrigatórios: '+g('must')+'\n\n3. TÉCNICO\nPacote: '+g('pacote')+'\nAplicação: '+(ap||'-')+'\nTécnica: '+g('tecnica')+'\n\n4. INSPIRAÇÕES\n'+[1,2,3,4,5].map(function(i){return g('l'+i)}).filter(function(x){return x!=='-'}).join('\n');
+document.getElementById('msg').textContent=m;document.getElementById('wa').href='https://wa.me/55SEUNUMERO?text='+encodeURIComponent(m);document.getElementById('ml').href='mailto:mokaelabo@gmail.com?subject='+encodeURIComponent('Novo pedido de criação — '+g('nome'))+'&body='+encodeURIComponent(m);
 var dn=document.getElementById('done'),dt=document.getElementById('dt'),dp=document.getElementById('dp'),sb=F.querySelector('button[type=submit]');
 dn.style.display='block';dt.textContent='Enviando...';dp.textContent='Aguarde um instante.';sb.disabled=true;dn.scrollIntoView({block:'center'});
-var pl={_subject:'Briefing de criação — '+g('nome'),_template:'table',_captcha:'false',Nome:g('nome'),Contato:g('contato'),Marca_e_publico:g('marca'),Referencias_esteticas:g('refest'),Tema_do_drop:g('tema'),Elementos_obrigatorios:g('must'),Pacote:g('pacote'),Aplicacao:ap||'-',Tecnica:g('tecnica'),Link_1:g('l1'),Link_2:g('l2'),Link_3:g('l3'),Link_4:g('l4'),Link_5:g('l5')};
-fetch('https://formsubmit.co/ajax/mokaelabo@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(pl)}).then(function(r){return r.json();}).then(function(j){if(j&&(j.success===true||j.success==='true')){dt.textContent='Briefing enviado!';dp.textContent='Recebemos o seu briefing. A MOKAE avalia o projeto e responde com a proposta por e-mail ou WhatsApp. Se quiser, mande também suas imagens de referência pelo WhatsApp.';}else{throw new Error('falha');}}).catch(function(){dt.textContent='Não consegui enviar automaticamente';dp.textContent='Mande o briefing por uma das opções abaixo (WhatsApp, e-mail ou copiar o texto).';}).finally(function(){sb.disabled=false;});});
+var pl={_subject:'Novo pedido de criação — '+g('nome'),_template:'table',_captcha:'false',Nome:g('nome'),Contato:g('contato'),Marca_e_publico:g('marca'),Referencias_esteticas:g('refest'),Tema_do_drop:g('tema'),Elementos_obrigatorios:g('must'),Pacote:g('pacote'),Aplicacao:ap||'-',Tecnica:g('tecnica'),Link_1:g('l1'),Link_2:g('l2'),Link_3:g('l3'),Link_4:g('l4'),Link_5:g('l5')};
+fetch('https://formsubmit.co/ajax/mokaelabo@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(pl)}).then(function(r){return r.json();}).then(function(j){if(j&&(j.success===true||j.success==='true')){dt.textContent='Pedido enviado!';dp.textContent='Recebemos as suas respostas. A MOKAE avalia o seu projeto e responde com a proposta por e-mail ou WhatsApp. Se quiser, mande também suas imagens de referência pelo WhatsApp.';}else{throw new Error('falha');}}).catch(function(){dt.textContent='Não consegui enviar automaticamente';dp.textContent='Mande o seu pedido por uma das opções abaixo (WhatsApp, e-mail ou copiar o texto).';}).finally(function(){sb.disabled=false;});});
 document.getElementById('cp').addEventListener('click',function(){try{navigator.clipboard.writeText(document.getElementById('msg').textContent);this.textContent='Copiado'}catch(e){}});
 </script>
 </body>
