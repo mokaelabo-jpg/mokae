@@ -42,7 +42,7 @@ body.on-brief .pg{display:none}
 /* window */
 .win{background:#0d0414;border:2px solid #000;border-radius:14px 14px 10px 10px;box-shadow:0 0 0 3px var(--ring),0 10px 0 -2px rgba(0,0,0,.75);overflow:hidden}
 .tb{display:flex;align-items:center;gap:10px;padding:8px 12px;color:#0a0a0a;font:400 14px var(--t);border-bottom:2px solid #000;
-background-image:linear-gradient(180deg,#faf5f6,#E8E2E1 45%,#8f888c 55%,#cfc8ca),var(--concrete);background-size:auto,cover;background-blend-mode:multiply}
+background-image:linear-gradient(180deg,#faf5f6,#E8E2E1 45%,#8f888c 55%,#cfc8ca),var(--concrete);background-size:auto,cover;background-blend-mode:soft-light}
 .tb b{flex:1;font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dot{width:14px;height:14px;border-radius:50%;border:2px solid #000;background:radial-gradient(circle at 35% 30%,#fff,var(--w) 60%,#8c868a)}
 .dot.g{background:radial-gradient(circle at 35% 30%,#eaffd8,var(--g) 60%,#0a9a00)}
@@ -84,7 +84,7 @@ h2{font-size:clamp(26px,4.4vw,46px);line-height:1;margin-bottom:10px}
 .drops{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
 .drop{display:flex;flex-direction:column;gap:10px;padding:10px;background:#000;border:2px solid var(--ring);border-radius:12px}
 .art{aspect-ratio:4/5;border-radius:8px;position:relative;overflow:hidden;border:2px solid #000}
-.drop.sold .art{filter:grayscale(1) contrast(1.1)}
+.drop.sold .stamp{-webkit-backdrop-filter:grayscale(1) contrast(1.1);backdrop-filter:grayscale(1) contrast(1.1)}
 .stamp{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.6);padding:10px;text-align:center}
 .stamp div{border:3px solid var(--g);color:var(--g);background:#000;padding:8px 10px;font:400 18px/1.1 var(--t);transform:rotate(-12deg)}
 .stamp small{display:block;margin-top:5px;font:400 13px var(--b);color:var(--w)}
@@ -96,7 +96,7 @@ h2{font-size:clamp(26px,4.4vw,46px);line-height:1;margin-bottom:10px}
 .pk .wb{padding:20px;background-image:var(--wall),linear-gradient(#3C0154,#12011a);background-size:cover;background-blend-mode:soft-light}
 .pk ul{margin:10px 0 0;padding-left:20px}
 .pr{color:var(--g);font:400 20px var(--t)}
-.win.hi .tb{background-image:linear-gradient(180deg,#eaffd8,var(--g) 48%,#0fb800 52%,var(--g)),var(--concrete);background-blend-mode:multiply}
+.win.hi .tb{background-image:linear-gradient(180deg,#eaffd8,var(--g) 48%,#0fb800 52%,var(--g)),var(--concrete);background-blend-mode:soft-light}
 /* terminal */
 .term{padding:26px;color:var(--g);font:400 clamp(18px,2.2vw,23px)/1.55 var(--b);text-shadow:0 0 8px rgba(24,255,0,.4);background-color:#000;background-image:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),var(--crack);background-size:auto,cover;background-blend-mode:normal,screen}
 .term p{margin:0 0 1em;max-width:800px}
@@ -133,6 +133,21 @@ h2{font-size:clamp(26px,4.4vw,46px);line-height:1;margin-bottom:10px}
 button.dot{padding:0;cursor:pointer}
 button.btn{cursor:pointer}
 #mxs{margin:14px 0 0;color:var(--g)}
+.radio-btn{margin-left:auto;background:transparent;color:var(--w);border:2px solid var(--w);border-radius:999px;padding:3px 12px;font:400 13px var(--t);cursor:pointer}
+.radio-btn:hover,.radio-btn[aria-expanded=true]{background:var(--g);border-color:#000;color:#000}
+.radio-btn+.clock{margin-left:0}
+.rmini{position:fixed;right:12px;bottom:calc(62px + env(safe-area-inset-bottom,0px));z-index:70;width:min(360px,calc(100vw - 24px))}
+.rmini[hidden]{display:none}
+.rmini .wb{padding:10px}
+.rmini iframe{display:block;width:100%;height:152px;border:0;border-radius:12px}
+.rmini .hint{margin:8px 2px 0;font-size:13px;opacity:.7}
+.tx-crack{background-image:var(--crack),linear-gradient(135deg,#3C0154,#0d0414);background-size:cover;background-blend-mode:screen}
+.tx-wall{background-image:linear-gradient(rgba(0,0,0,.76),rgba(0,0,0,.76)),var(--wall);background-size:auto,cover}
+.pk .win{display:flex;flex-direction:column}
+.pk .win>.wb{flex:1;background-image:linear-gradient(rgba(60,1,84,.6),rgba(18,1,26,.8)),var(--wall);background-size:auto,cover;background-blend-mode:normal}
+.rp-soon{border:2px dashed var(--ring);border-radius:12px;padding:28px;text-align:center;margin:0;opacity:.8}
+.alt{margin:18px 0 0;opacity:.85}
+.alt a{border-bottom:2px solid var(--g)}
 /* briefing */
 .back{display:inline-block;margin-bottom:18px;border-bottom:2px solid var(--g)}
 .fq{margin:0 0 30px;padding:0;border:0}
@@ -176,7 +191,7 @@ textarea.f{min-height:100px;resize:vertical}
 
 <section class="sec" id="loja"><div class="wrap"><div class="win">
 <div class="tb"><i class="dot"></i><b>loja/produtos</b><i class="dot"></i><i class="dot g"></i></div>
-<div class="wb">
+<div class="wb tx-crack">
 <h2>Loja</h2>
 <p class="sub">Arte autoral em formatos prontos para levar para a sua marca, o seu projeto ou o seu dia a dia.</p>
 <div class="shop">
@@ -184,7 +199,7 @@ textarea.f{min-height:100px;resize:vertical}
 <div class="prod big"><div class="pk2">
 <div><span class="badge">NOVO</span><h3>Pack Streetwear 01</h3>
 <p>10 estampas prontas para usar na sua marca, com um kit de texturas de brinde. Pagou, baixou, estampou.</p>
-<div class="lcd">R$ 197</div><br><a class="btn" href="#checkout" data-notify="Clique em Comprar: Pack Streetwear 01">Comprar e baixar agora</a></div>
+<div class="lcd">R$ 197</div><br><a class="btn" href="https://pay.hotmart.com/W108045883W" target="_blank" rel="noopener" data-notify="Clique em Comprar: Pack Streetwear 01">Comprar e baixar agora</a></div>
 <div class="cells" aria-label="Prévia das 10 estampas">
 <i style="background:url(imagens/pack-01.jpg) center/cover no-repeat,radial-gradient(circle,#18FF00,#000)"></i><i style="background:url(imagens/pack-02.jpg) center/cover no-repeat,conic-gradient(#E8E2E1,#000,#E8E2E1)"></i><i style="background:url(imagens/pack-03.jpg) center/cover no-repeat,linear-gradient(45deg,#000,#18FF00)"></i><i style="background:url(imagens/pack-04.jpg) center/cover no-repeat,repeating-linear-gradient(45deg,#18FF00 0 6px,#000 6px 12px)"></i><i style="background:url(imagens/pack-05.jpg) center/cover no-repeat,radial-gradient(circle at 20% 80%,#E8E2E1,#3C0154)"></i>
 <i style="background:url(imagens/pack-06.jpg) center/cover no-repeat,radial-gradient(circle at 80% 20%,#18FF00,#3C0154)"></i><i style="background:url(imagens/pack-07.jpg) center/cover no-repeat,conic-gradient(from 90deg,#000,#18FF00)"></i><i style="background:url(imagens/pack-08.jpg) center/cover no-repeat,repeating-radial-gradient(circle,#000 0 5px,#E8E2E1 5px 10px)"></i><i style="background:url(imagens/pack-09.jpg) center/cover no-repeat,linear-gradient(180deg,#000,#E8E2E1)"></i><i style="background:url(imagens/pack-10.jpg) center/cover no-repeat,radial-gradient(circle,#E8E2E1,#000 70%)"></i>
@@ -196,15 +211,15 @@ textarea.f{min-height:100px;resize:vertical}
 
 <section class="sec" id="drops"><div class="wrap"><div class="win">
 <div class="tb"><i class="dot"></i><b>drops_exclusivos.gal</b><i class="dot"></i><i class="dot g"></i></div>
-<div class="wb">
+<div class="wb tx-wall">
 <h2>Drops exclusivos</h2>
 <p class="sub">Cada arte tem um único dono. Quem garante, leva o direito exclusivo do arquivo.</p>
 <div class="drops">
-<div class="drop sold"><div class="art" style="background:url(imagens/drop-001.jpg) center/cover no-repeat,radial-gradient(circle at 30% 30%,#18FF00,#3C0154 60%,#000)"><div class="stamp"><div>ESGOTADO<small>Exclusiva da marca [Nome da marca]</small></div></div></div><h4>Estampa #001: Cyber Rebel</h4><p>vendida</p><a class="btn off" href="#">Indisponível</a></div>
-<div class="drop"><div class="art" style="background:url(imagens/drop-002.jpg) center/cover no-repeat,conic-gradient(from 20deg,#000,#3C0154,#18FF00,#000)"></div><h4>Estampa #002: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="#" data-excl="002">Garantir exclusividade</a></div>
-<div class="drop"><div class="art" style="background:url(imagens/drop-003.jpg) center/cover no-repeat,repeating-radial-gradient(circle at 60% 40%,#3C0154 0 14px,#000 14px 28px)"></div><h4>Estampa #003: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="#" data-excl="003">Garantir exclusividade</a></div>
-<div class="drop sold"><div class="art" style="background:url(imagens/drop-004.jpg) center/cover no-repeat,linear-gradient(135deg,#3C0154 50%,#18FF00 50%)"><div class="stamp"><div>ESGOTADO<small>Exclusiva da marca [Nome da marca]</small></div></div></div><h4>Estampa #004: Nome da arte</h4><p>vendida</p><a class="btn off" href="#">Indisponível</a></div>
-<div class="drop"><div class="art" style="background:url(imagens/drop-005.jpg) center/cover no-repeat,radial-gradient(circle at 70% 70%,#E8E2E1,#3C0154 45%,#000)"></div><h4>Estampa #005: Nome da arte</h4><p>R$ XXX</p><a class="btn" href="#" data-excl="005">Garantir exclusividade</a></div>
+<div class="drop sold"><div class="art" style="background:url(imagens/drop-001.jpg) center/cover no-repeat,radial-gradient(circle at 30% 30%,#18FF00,#3C0154 60%,#000)"><div class="stamp"><div>ESGOTADO</div></div></div><h4>Estampa #001</h4><p>vendida</p><a class="btn off" href="#">Indisponível</a></div>
+<div class="drop"><div class="art" style="background:url(imagens/drop-002.jpg) center/cover no-repeat,conic-gradient(from 20deg,#000,#3C0154,#18FF00,#000)"></div><h4>Estampa #002</h4><p>R$ 450</p><a class="btn" href="#" data-excl="002">Garantir exclusividade</a></div>
+<div class="drop"><div class="art" style="background:url(imagens/drop-003.jpg) center/cover no-repeat,repeating-radial-gradient(circle at 60% 40%,#3C0154 0 14px,#000 14px 28px)"></div><h4>Estampa #003</h4><p>R$ 450</p><a class="btn" href="#" data-excl="003">Garantir exclusividade</a></div>
+<div class="drop sold"><div class="art" style="background:url(imagens/drop-004.jpg) center/cover no-repeat,linear-gradient(135deg,#3C0154 50%,#18FF00 50%)"><div class="stamp"><div>ESGOTADO</div></div></div><h4>Estampa #004</h4><p>vendida</p><a class="btn off" href="#">Indisponível</a></div>
+<div class="drop"><div class="art" style="background:url(imagens/drop-005.jpg) center/cover no-repeat,radial-gradient(circle at 70% 70%,#E8E2E1,#3C0154 45%,#000)"></div><h4>Estampa #005</h4><p>R$ 450</p><a class="btn" href="#" data-excl="005">Garantir exclusividade</a></div>
 </div></div></div></div></section>
 
 <section class="sec" id="encomenda"><div class="wrap"><div class="win">
@@ -241,10 +256,12 @@ textarea.f{min-height:100px;resize:vertical}
 <h2>Vamos conversar</h2>
 <p class="sub">Dúvida, ideia ou vontade de fazer algo junto? Escreve pra gente ou vem acompanhar o laboratório pelas redes.</p>
 <div class="row">
-<a class="btn" href="mailto:mokaelabo@gmail.com">mokaelabo@gmail.com</a>
+<a class="btn" href="#" data-contact>Escrever uma mensagem</a>
 <!-- REDES: para adicionar TikTok ou YouTube, copie a linha abaixo e troque o link e o nome -->
 <a class="btn v" href="https://www.instagram.com/laboratoriomokae/" target="_blank" rel="noopener">Instagram</a>
-</div></div></div></div></section>
+</div>
+<p class="alt">Prefere usar o seu app de e-mail? Escreva para <a href="mailto:mokaelabo@gmail.com">mokaelabo@gmail.com</a>.</p>
+</div></div></div></section>
 
 <section id="briefing"><div class="wrap">
 <a class="back" href="#encomenda">&larr; Voltar aos pacotes</a>
@@ -294,7 +311,16 @@ textarea.f{min-height:100px;resize:vertical}
 <p>Deixe o seu nome e e-mail. A MOKAE recebe o aviso na hora e responde com os próximos passos.</p>
 <form id="mf"><label for="mxn">Seu nome</label><input class="f" id="mxn" required><label for="mxe">Seu e-mail</label><input class="f" id="mxe" type="email" required>
 <button class="btn" type="submit" id="mxb">Enviar</button><p id="mxs" role="status"></p></form></div></div></div>
-<div class="task"><a class="start" href="#top"><i class="lg"></i></a><span>laboratório criativo autoral © 2026 · <a href="mailto:mokaelabo@gmail.com" style="border-bottom:2px solid var(--g)">mokaelabo@gmail.com</a> · <a href="https://www.instagram.com/laboratoriomokae/" target="_blank" rel="noopener" style="border-bottom:2px solid var(--g)">Instagram</a></span><div class="clock" id="clk">00:00</div></div>
+<div class="modal" id="mc" hidden role="dialog" aria-modal="true" aria-labelledby="mct"><div class="win">
+<div class="tb"><i class="dot"></i><b>nova_mensagem.exe</b><i class="dot"></i><button type="button" class="dot g" id="mcc" aria-label="Fechar"></button></div>
+<div class="wb"><h3 id="mct">Escrever para a MOKAE</h3>
+<p>Conta o que você tem em mente: uma ideia, uma dúvida ou uma parceria. A mensagem chega direto no e-mail da MOKAE.</p>
+<form id="mcf"><label for="mcn">Seu nome</label><input class="f" id="mcn" required><label for="mce">Seu e-mail</label><input class="f" id="mce" type="email" required><label for="mcm">Sua mensagem</label><textarea class="f" id="mcm" required></textarea>
+<button class="btn" type="submit" id="mcb">Enviar mensagem</button><p id="mcs" role="status" style="margin:14px 0 0;color:var(--g)"></p></form></div></div></div>
+<div class="rmini" id="rm" hidden><div class="win">
+<div class="tb"><i class="dot"></i><b>radio_mokae.exe</b><i class="dot"></i><button type="button" class="dot g" id="rmc" aria-label="Minimizar rádio"></button></div>
+<div class="wb"><div id="rp"></div><p class="hint">Dá o play e continua navegando. A música segue tocando se você minimizar.</p></div></div></div>
+<div class="task"><a class="start" href="#top"><i class="lg"></i></a><span>laboratório criativo autoral © 2026</span><button type="button" class="radio-btn" id="rb" aria-expanded="false" aria-controls="rm">♪ Rádio</button><div class="clock" id="clk">00:00</div></div>
 <script>
 function t(){var d=new Date();document.getElementById('clk').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}
 t();setInterval(t,30000);
@@ -322,6 +348,20 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
 document.getElementById('mf').addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('mxn').value.trim(),em=document.getElementById('mxe').value.trim(),st=document.getElementById('mxs'),b=document.getElementById('mxb');b.disabled=true;st.textContent='Enviando...';
 send({_subject:'Interesse na Estampa #'+cur+' — '+n,Estampa:'#'+cur,Nome:n,email:em,_autoresponse:'Oi, '+n+'! Recebemos o seu interesse na Estampa #'+cur+'. Em breve a MOKAE responde por aqui com os próximos passos.'}).then(function(j){if(j&&(j.success===true||j.success==='true')){st.textContent='Recebemos! A MOKAE responde por e-mail em breve.';document.getElementById('mf').reset();}else{throw new Error('falha');}}).catch(function(){st.textContent='Não consegui enviar. Escreva para mokaelabo@gmail.com.';}).finally(function(){b.disabled=false;});});
 document.querySelectorAll('[data-notify]').forEach(function(a){a.addEventListener('click',function(){try{send({_subject:a.getAttribute('data-notify'),Botao:a.textContent.trim(),Pagina:location.href}).catch(function(){});}catch(e){}});});
+
+var PLAYLIST='https://open.spotify.com/playlist/1Y8effsHXiewThTw8SNZiT';
+var rm=document.getElementById('rm'),rb=document.getElementById('rb'),rl=false;
+function radio(open){rm.hidden=!open;rb.setAttribute('aria-expanded',open?'true':'false');if(open&&!rl){rl=true;var u=PLAYLIST.split('?')[0].replace('open.spotify.com/','open.spotify.com/embed/').replace(/\/intl-[a-z-]+\//,'/');var f=document.createElement('iframe');f.src=u+'?theme=0';f.title='Playlist da MOKAE';f.allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';document.getElementById('rp').appendChild(f);}}
+rb.addEventListener('click',function(){radio(rm.hidden);});
+document.getElementById('rmc').addEventListener('click',function(){radio(false);});
+var mc=document.getElementById('mc');
+function closeC(){mc.hidden=true;}
+document.querySelectorAll('[data-contact]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();document.getElementById('mcs').textContent='';mc.hidden=false;document.getElementById('mcn').focus();});});
+document.getElementById('mcc').addEventListener('click',closeC);
+mc.addEventListener('click',function(e){if(e.target===mc)closeC();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeC();});
+document.getElementById('mcf').addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('mcn').value.trim(),em=document.getElementById('mce').value.trim(),m=document.getElementById('mcm').value.trim(),st=document.getElementById('mcs'),b=document.getElementById('mcb');b.disabled=true;st.textContent='Enviando...';
+send({_subject:'Mensagem pelo site — '+n,Nome:n,email:em,Mensagem:m,_autoresponse:'Oi, '+n+'! Recebemos a sua mensagem. A MOKAE responde por aqui em breve.'}).then(function(j){if(j&&(j.success===true||j.success==='true')){st.textContent='Mensagem enviada! A MOKAE responde por e-mail em breve.';document.getElementById('mcf').reset();}else{throw new Error('falha');}}).catch(function(){st.textContent='Não consegui enviar. Escreva para mokaelabo@gmail.com.';}).finally(function(){b.disabled=false;});});
 </script>
 </body>
 </html>
